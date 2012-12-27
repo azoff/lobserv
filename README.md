@@ -6,7 +6,9 @@ Quick Start
 -------
 Tell lobserv what to wait for, and then what to do (that's it!). No boilerplate required.
 
-```js
+```html
+<script src="lobserv.min.js"></script>
+<script>
 // load jQuery (simple right?)
 lobserv('http://code.jquery.com/jquery.min.js');
 // wait until jQuery is available, then load jQuery UI
@@ -16,6 +18,7 @@ lobserv(['jQuery.fn', 'jQuery.ui'], function(fn, ui){
 	console.log('jQuery version', fn.jquery);
 	console.log('jQuery UI version', ui.version);
 });
+</script>
 ```
 
 The API
