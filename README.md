@@ -68,3 +68,12 @@ Licence
 -------
 This software is licenced under the ever-liberal [MIT License](lobserv/blob/master/LICENCE.md). Let me know if you use it
 anywhere fun!
+
+TODO
+----
+- Add a fallback for when defineProperty does not exist
+- Add a package.json (also publish)
+- Add a test for multiple listeners on the same prop before loading script
+- Test in browsers (Sauce?)
+- Add a compatibility section
+- Add (and link to) a CDN site
