@@ -23,19 +23,19 @@ The API
 Lobserv only exposes one global method: `lobserv(...)`. However, the method is polymorphic and supports three
 signatures:
 
-- `lobserv(scripts)`
-  *Immediately load and execute one or more scripts*
+```js lobserv(scripts) ```
+*Immediately load and execute one or more scripts*
   - `scripts` `String|Array` The script, or scripts, to load
 
 
-- `lobserv(prereqs, scripts)`
-  *Loads scripts after the prerequisites exist*
+```js lobserv(prereqs, scripts) ```
+*Loads scripts after the prerequisites exist*
   - `prereqs` `String|Array` One or more prerequisites that should exist before loading scripts
   - `scripts` `String|Array` The script, or scripts, to load after the prerequisites exist
 
 
-- `lobserv(prereqs, callback)`
-  *Waits until prereqs exist, then passes them into the callback*
+```js lobserv(prereqs, callback) ```
+*Waits until prereqs exist, then passes them into the callback*
   - `prereqs`  `String|Array`      One or more prerequisites that should be passed to the callback
   - `callback` `Function(...args)` The method to call when the prerequisites exist; args match the evaluated prereqs
 
@@ -53,9 +53,9 @@ is Lobserv; I hope you enjoy using it as much as I enjoyed writing it!
 
 Bugs
 ----
-Please report all bugs and feature requests on [the official tracker](azoff/lobserv/issues).
+Please report all bugs and feature requests on [the official tracker](lobserv/issues).
 
 Licence
 -------
-This software is licenced under the ever-liberal [MIT License](azoff/lobserv/blob/master/LICENCE.md). Let me know if you use it
+This software is licenced under the ever-liberal [MIT License](lobserv/blob/master/LICENCE.md). Let me know if you use it
 anywhere fun!
