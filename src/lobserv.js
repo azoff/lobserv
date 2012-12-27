@@ -1,6 +1,19 @@
+/**
+ * Lobserv - An obvious script loader
+ *
+ * @version 1.0.0
+ * @license MIT <https://github.com/azoff/lobserv/blob/master/LICENSE.md>
+ * @link <https://github.com/azoff/lobserv>
+ * @author Jonathan Azoff <jon@azoffdesign.com>
+ */
+
+/*! Lobserv | v1.0.0 | MIT | http://azof.fr/U1Selv */
+
 (function(global, dom){
 
 	"use strict";
+
+	var loaded = {};
 
 	function whenSet(object, property, callback) {
 		if (!Object.defineProperty) {
@@ -9,7 +22,11 @@
 		Object.defineProperty(object, property, {
 			configurable: true,
 			set: function(value){
-				Object.defineProperty(object, property, { value: value });
+				Object.defineProperty(object, property, {
+					value: value,
+					writable: true,
+					enumerable: true
+				});
 				callback(value);
 			}
 		});
@@ -54,30 +71,18 @@
 		return Object.prototype.toString.call(obj) === '[object Array]';
 	}
 
-	function preload(src) {
-		var preloader = new Image();
-		preloader.src = src;
-	}
-
 	function scriptLoader(scripts) {
-		var total = scripts.length;
-		for (var i=0; i<total; i++) {
-			// preload the scripts into the browser cache
-			if (scripts[i] in scriptLoader.cache) {
-				scripts[i].skip = true;
-				continue;
-			}
-			preload(scripts[i]);
-			scriptLoader.cache[scripts[i]] = true;
-		}
+		var src, total = scripts.length;
 		return function() {
-			for (i=0; i<total; i++) {
+			for (var i=0; i<total; i++) {
 				// by the time we get here, the scripts will already be cached
-				if (scripts[i].skip) { continue; }
-				load(scripts[i]);
+				if (!loaded.hasOwnProperty(src = scripts[i])) {
+					loaded[src] = true;
+					load(src);
+				}
 			}
 		};
-	} scriptLoader.cache = {};
+	}
 
 	function whenExists(object, property, callback) {
 		var parts = property.split('.');

@@ -29,13 +29,3 @@ asyncTest('load jqueryui after jquery', 2, function(){
 		start();
 	});
 });
-
-asyncTest('load jqueryui after jquery', 2, function(){
-	lobserv('http://code.jquery.com/jquery.min.js');
-	lobserv('jQuery', 'http://code.jquery.com/ui/1.9.2/jquery-ui.min.js');
-	lobserv(['jQuery', 'jQuery.fn.button'], function($, button){
-		ok($, 'Could not find valid jQuery object');
-		ok(button, 'Could not find valid jQuery.fn.button object');
-		start();
-	});
-});
