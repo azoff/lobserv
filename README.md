@@ -23,18 +23,24 @@ The API
 Lobserv only exposes one global method: `lobserv(...)`. However, the method is polymorphic and supports three
 signatures:
 
-```js lobserv(scripts) ```
+```js
+lobserv(scripts)
+```
 *Immediately load and execute one or more scripts*
   - `scripts` `String|Array` The script, or scripts, to load
 
 
-```js lobserv(prereqs, scripts) ```
+```js
+lobserv(prereqs, scripts)
+```
 *Loads scripts after the prerequisites exist*
   - `prereqs` `String|Array` One or more prerequisites that should exist before loading scripts
   - `scripts` `String|Array` The script, or scripts, to load after the prerequisites exist
 
 
-```js lobserv(prereqs, callback) ```
+```js
+lobserv(prereqs, callback)
+```
 *Waits until prereqs exist, then passes them into the callback*
   - `prereqs`  `String|Array`      One or more prerequisites that should be passed to the callback
   - `callback` `Function(...args)` The method to call when the prerequisites exist; args match the evaluated prereqs
